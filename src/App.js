@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import Articles from './components/Articles/Articles';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,6 +9,12 @@ class App extends React.Component {
     this.state = {
       result: null,
     };
+  }
+
+  componentDidMount() {
+    fetch('http://hn.algolia.com/api/v1/search?query=react')
+      .then((response) => response.json())
+      .then((result) => this.setState({ result }));
   }
 
   render() {
@@ -26,7 +33,7 @@ class App extends React.Component {
         </header>
         <div className="app__content">
           <div className="app__container">
-            content
+            <Articles list={result.hits} />
           </div>
         </div>
       </div>
