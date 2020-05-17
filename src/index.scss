@@ -1,0 +1,37 @@
+@import-normalize;
+
+@font-face {
+  font-family: 'PT Sans';
+  src: url('./fonts/PTSans-Regular.woff2') format('woff2'),
+      url('./fonts/PTSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  src: url('./fonts/PTSans-Bold.woff2') format('woff2'),
+      url('./fonts/PTSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: 'PT Sans', sans-serif;
+}
+
+a {
+  color: #252525;
+  text-decoration: none;
+
+  &:visited {
+    color: #252525;
+  }
+
+  &:hover {
+    color: #1827ce;
+    text-decoration: none;
+  }
+}
