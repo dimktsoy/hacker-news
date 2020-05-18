@@ -1,0 +1,38 @@
+.search {
+  position: relative;
+  display: flex;
+
+  &__control {
+    width: 100%;
+    max-width: 300px;
+    font-size: 18px;
+    padding: 9px 10px;
+    border-radius: 4px;
+    border:1px solid #b5bdc4;
+    margin-right: 10px;
+    outline: none;
+    background-color: #f9fafa;
+
+    &:hover {
+      border-color: #99a3ad;
+    }
+
+    &:focus {
+      border-color: #3b49df;
+      box-shadow: 1px 1px 0 #3b49df;
+    }
+  }
+
+  &__btn {
+    border: 0;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 0 15px;
+    background-color: #3b49df;
+    color: #fff;
+
+    &:hover {
+      background-color: #1827ce;
+    }
+  }
+}

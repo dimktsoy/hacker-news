@@ -1,6 +1,15 @@
 import React from 'react';
 import './App.scss';
 import Articles from './components/Articles/Articles';
+import Search from './components/Search/Search';
+
+const DEFAULT_QUERY = 'redux';
+const DEFAULT_HPP = '10';
+const PATH_BASE = 'https://hn.algolia.com/api/v1';
+const PATH_SEARCH = '/search';
+const PARAM_SEARCH = 'query=';
+const PARAM_PAGE = 'page=';
+const PARAM_HPP = 'hitsPerPage=';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,17 +17,47 @@ class App extends React.Component {
 
     this.state = {
       result: null,
+      searchTerm: DEFAULT_QUERY,
     };
+
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
+    this.setSearchTopStories = this.setSearchTopStories.bind(this);
   }
 
   componentDidMount() {
-    fetch('http://hn.algolia.com/api/v1/search?query=react')
-      .then((response) => response.json())
-      .then((result) => this.setState({ result }));
+    const { searchTerm } = this.state;
+    this.fetchSearchTopStories(searchTerm);
   }
 
+  onSearchChange(event) {
+    this.setState({
+      searchTerm: event.target.value,
+    });
+  }
+
+  onSearchSubmit(event) {
+    const { searchTerm } = this.state;
+    this.fetchSearchTopStories(searchTerm);
+    event.preventDefault();
+  }
+
+  setSearchTopStories(result) {
+    this.setState({
+      result,
+    });
+  }
+
+  fetchSearchTopStories(searchTerm, page = 0) {
+    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+      .then((response) => response.json())
+      .then((result) => this.setSearchTopStories(result));
+  }
+
+
   render() {
-    const { result } = this.state;
+    const { result, searchTerm } = this.state;
 
     if (!result) {
       return null;
@@ -28,7 +67,13 @@ class App extends React.Component {
       <div className="app">
         <header className="app__header">
           <div className="app__container">
-            header
+            <Search
+              value={searchTerm}
+              onChange={this.onSearchChange}
+              onSubmit={this.onSearchSubmit}
+            >
+              Search
+            </Search>
           </div>
         </header>
         <div className="app__content">
