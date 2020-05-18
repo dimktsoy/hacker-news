@@ -3,7 +3,7 @@ import './App.scss';
 import Articles from './components/Articles/Articles';
 import Search from './components/Search/Search';
 
-const DEFAULT_QUERY = 'redux';
+const DEFAULT_QUERY = 'react';
 const DEFAULT_HPP = '10';
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
@@ -62,15 +62,12 @@ class App extends React.Component {
   fetchSearchTopStories(searchTerm, page = 0) {
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then((response) => response.json())
-      .then((result) => this.setSearchTopStories(result));
+      .then((result) => this.setSearchTopStories(result))
+      .catch((error) => error);
   }
 
   render() {
     const { result, searchTerm } = this.state;
-
-    if (!result) {
-      return null;
-    }
 
     return (
       <div className="app">
@@ -87,10 +84,12 @@ class App extends React.Component {
         </header>
         <div className="app__content">
           <div className="app__container">
-            <Articles
-              list={result.hits}
-              onDismiss={this.onDismiss}
-            />
+            { result && (
+              <Articles
+                list={result.hits}
+                onDismiss={this.onDismiss}
+              />
+            )}
           </div>
         </div>
       </div>
