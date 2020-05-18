@@ -24,6 +24,7 @@ class App extends React.Component {
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
     this.setSearchTopStories = this.setSearchTopStories.bind(this);
+    this.onDismiss = this.onDismiss.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +44,15 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  onDismiss(id) {
+    const { result } = this.state;
+    const isNotID = (item) => item.objectID !== id;
+    const updatedList = result.hits.filter(isNotID);
+    this.setState({
+      result: { ...result, hits: updatedList },
+    });
+  }
+
   setSearchTopStories(result) {
     this.setState({
       result,
@@ -54,7 +64,6 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((result) => this.setSearchTopStories(result));
   }
-
 
   render() {
     const { result, searchTerm } = this.state;
@@ -78,7 +87,10 @@ class App extends React.Component {
         </header>
         <div className="app__content">
           <div className="app__container">
-            <Articles list={result.hits} />
+            <Articles
+              list={result.hits}
+              onDismiss={this.onDismiss}
+            />
           </div>
         </div>
       </div>
