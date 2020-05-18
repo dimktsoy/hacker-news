@@ -1,6 +1,7 @@
 import React from 'react';
 import './Articles.scss';
-import { arrayOf, object } from 'prop-types';
+import PropTypes from 'prop-types';
+import Button from '../Button/Button';
 
 const formatDate = (date) => {
   const pos = date.indexOf('T');
@@ -8,7 +9,7 @@ const formatDate = (date) => {
   return dateResult;
 };
 
-function Articles({ list }) {
+function Articles({ list, onDismiss }) {
   return (
     <ul className="articles">
       {list.map((item) => (
@@ -29,6 +30,11 @@ function Articles({ list }) {
               &nbsp;comments
             </span>
           </div>
+          <Button
+            onClick={() => onDismiss(item.objectID)}
+          >
+            Dismiss
+          </Button>
         </li>
       ))}
     </ul>
@@ -36,7 +42,8 @@ function Articles({ list }) {
 }
 
 Articles.propTypes = {
-  list: arrayOf(object).isRequired,
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onDismiss: PropTypes.func.isRequired,
 };
 
 export default Articles;
