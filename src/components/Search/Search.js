@@ -1,12 +1,12 @@
 import React from 'react';
 import './Search.scss';
 import PropTypes from 'prop-types';
+import Button from '../Button/Button';
 
 function Search({
   value,
   onSubmit,
   onChange,
-  children,
 }) {
   return (
     <form
@@ -19,12 +19,12 @@ function Search({
         value={value}
         onChange={onChange}
       />
-      <button
-        className="search__btn"
+      <Button
+        className="button--primary"
         type="submit"
       >
-        {children}
-      </button>
+        Search
+      </Button>
     </form>
   );
 }
@@ -33,7 +33,6 @@ Search.propTypes = {
   value: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
 };
 
 export default Search;

@@ -1,7 +1,12 @@
 .articles {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+
+  /* List */
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;  
+  }
 
   /* Item */
 
@@ -46,5 +51,12 @@
   &__meta-item--author {
     font-weight: bold;
     font-size: #4d5760;
+  }
+
+  /* Bottom */
+
+  &__bottom {
+    margin-top: 20px;
+    text-align: center;
   }
 }
