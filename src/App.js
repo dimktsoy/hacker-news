@@ -4,7 +4,8 @@ import Articles from './components/Articles/Articles';
 import Search from './components/Search/Search';
 
 const DEFAULT_QUERY = 'react';
-const DEFAULT_HPP = '10';
+const DEFAULT_HPP = '5';
+const DEFAULT_PAGE = '0';
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
@@ -29,7 +30,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const { searchTerm } = this.state;
-    this.fetchSearchTopStories(searchTerm);
+    this.fetchSearchTopStories(searchTerm, DEFAULT_PAGE);
   }
 
   onSearchChange(event) {
@@ -54,8 +55,15 @@ class App extends React.Component {
   }
 
   setSearchTopStories(result) {
+    const { hits, page } = result;
+    const { result: prevResult } = this.state;
+    const oldHits = page !== 0 ? prevResult.hits : [];
+    const updatedList = [...oldHits, ...hits];
     this.setState({
-      result,
+      result: {
+        hits: updatedList,
+        page,
+      },
     });
   }
 
@@ -68,6 +76,7 @@ class App extends React.Component {
 
   render() {
     const { result, searchTerm } = this.state;
+    const page = (result && result.page) || 0;
 
     return (
       <div className="app">
@@ -88,6 +97,7 @@ class App extends React.Component {
               <Articles
                 list={result.hits}
                 onDismiss={this.onDismiss}
+                onShowMore={() => this.fetchSearchTopStories(searchTerm, page + 1)}
               />
             )}
           </div>

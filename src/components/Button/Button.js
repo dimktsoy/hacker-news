@@ -2,11 +2,17 @@ import React from 'react';
 import './Button.scss';
 import PropTypes from 'prop-types';
 
-function Button({ onClick, children }) {
+function Button({
+  type,
+  onClick,
+  children,
+  className,
+}) {
   return (
+    // eslint-disable-next-line react/button-has-type
     <button
-      className="button"
-      type="button"
+      className={`button ${className}`}
+      type={type}
       onClick={onClick}
     >
       {children}
@@ -14,9 +20,18 @@ function Button({ onClick, children }) {
   );
 }
 
+Button.defaultProps = {
+  type: 'button',
+  onClick: () => {},
+  children: 'Button',
+  className: '',
+};
+
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  onClick: PropTypes.func,
+  children: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Button;
