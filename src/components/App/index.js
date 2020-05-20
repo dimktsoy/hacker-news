@@ -24,6 +24,7 @@ class App extends React.Component {
       result: null,
       searchTerm: DEFAULT_QUERY,
       isLoading: false,
+      error: null,
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -78,12 +79,18 @@ class App extends React.Component {
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then((response) => response.json())
       .then((result) => this.setSearchTopStories(result))
-      .catch((error) => error);
+      .catch((error) => this.setState({ error }));
   }
 
   render() {
-    const { result, searchTerm, isLoading } = this.state;
+    const {
+      result,
+      searchTerm,
+      isLoading,
+      error,
+    } = this.state;
     const page = (result && result.page) || 0;
+    const list = (result && result.hits) || [];
 
     return (
       <div className="app">
@@ -100,12 +107,14 @@ class App extends React.Component {
         </header>
         <div className="app__content">
           <div className="app__container">
-            { result && (
-              <Articles
-                list={result.hits}
-                onDismiss={this.onDismiss}
-              />
-            )}
+            { error
+              ? <h2>Something went wrong!</h2>
+              : (
+                <Articles
+                  list={list}
+                  onDismiss={this.onDismiss}
+                />
+              )}
           </div>
           <div className="app__bottom">
             { isLoading
