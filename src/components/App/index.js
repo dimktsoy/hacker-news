@@ -20,6 +20,7 @@ class App extends React.Component {
     this.state = {
       result: null,
       searchTerm: DEFAULT_QUERY,
+      isLoading: false,
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -65,10 +66,12 @@ class App extends React.Component {
         hits: updatedList,
         page,
       },
+      isLoading: false,
     });
   }
 
   fetchSearchTopStories(searchTerm, page = 0) {
+    this.setState({ isLoading: true });
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then((response) => response.json())
       .then((result) => this.setSearchTopStories(result))
@@ -76,7 +79,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { result, searchTerm } = this.state;
+    const { result, searchTerm, isLoading } = this.state;
     const page = (result && result.page) || 0;
 
     return (
@@ -99,6 +102,7 @@ class App extends React.Component {
                 list={result.hits}
                 onDismiss={this.onDismiss}
                 onShowMore={() => this.fetchSearchTopStories(searchTerm, page + 1)}
+                isLoading={isLoading}
               />
             )}
           </div>
