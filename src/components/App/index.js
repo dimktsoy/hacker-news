@@ -1,7 +1,10 @@
 import React from 'react';
 import './index.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Articles from '../Articles';
 import Search from '../Search';
+import Button from '../Button';
 import {
   DEFAULT_QUERY,
   DEFAULT_HPP,
@@ -101,10 +104,20 @@ class App extends React.Component {
               <Articles
                 list={result.hits}
                 onDismiss={this.onDismiss}
-                onShowMore={() => this.fetchSearchTopStories(searchTerm, page + 1)}
-                isLoading={isLoading}
               />
             )}
+          </div>
+          <div className="app__bottom">
+            { isLoading
+              ? <FontAwesomeIcon icon={faSpinner} size="lg" spin />
+              : (
+                <Button
+                  onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}
+                  className="button--primary"
+                >
+                  More
+                </Button>
+              )}
           </div>
         </div>
       </div>

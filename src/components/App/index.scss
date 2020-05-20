@@ -1,4 +1,7 @@
 .app {
+
+  /* Header */
+
   &__header {
     padding: 8px 0;
     border-bottom: 1px solid #ddd;
@@ -10,12 +13,23 @@
     z-index: 100;
   }
 
+  /* Content */
+
   &__content {
     padding: 90px 0 100px;
   }
 
+  /* Container */
+
   &__container {
     max-width: 800px;
     margin: 0 auto;
+  }
+
+  /* Bottom */
+
+  &__bottom {
+    margin-top: 20px;
+    text-align: center;
   }
 }

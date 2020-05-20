@@ -2,8 +2,6 @@ import React from 'react';
 import './index.scss';
 import PropTypes from 'prop-types';
 import Button from '../Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const formatDate = (date) => {
   const pos = date.indexOf('T');
@@ -11,7 +9,10 @@ const formatDate = (date) => {
   return dateResult;
 };
 
-function Articles({ list, onDismiss, onShowMore, isLoading }) {
+function Articles({
+  list,
+  onDismiss,
+}) {
   return (
     <div className="articles">
       <ul className="articles__list">
@@ -41,18 +42,6 @@ function Articles({ list, onDismiss, onShowMore, isLoading }) {
           </li>
         ))}
       </ul>
-      <div className="articles__bottom">
-        { isLoading
-          ? <FontAwesomeIcon icon={faSpinner} size="lg" spin />
-          : (
-            <Button
-              onClick={onShowMore}
-              className="button--primary"
-            >
-              More
-            </Button>
-          )}
-      </div>
     </div>
   );
 }
@@ -60,7 +49,6 @@ function Articles({ list, onDismiss, onShowMore, isLoading }) {
 Articles.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object).isRequired,
   onDismiss: PropTypes.func.isRequired,
-  onShowMore: PropTypes.func.isRequired,
 };
 
 export default Articles;
