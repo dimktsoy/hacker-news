@@ -1,16 +1,17 @@
 import React from 'react';
-import './App.scss';
-import Articles from './components/Articles/Articles';
-import Search from './components/Search/Search';
-
-const DEFAULT_QUERY = 'react';
-const DEFAULT_HPP = '5';
-const DEFAULT_PAGE = '0';
-const PATH_BASE = 'https://hn.algolia.com/api/v1';
-const PATH_SEARCH = '/search';
-const PARAM_SEARCH = 'query=';
-const PARAM_PAGE = 'page=';
-const PARAM_HPP = 'hitsPerPage=';
+import './index.scss';
+import Articles from '../Articles';
+import Search from '../Search';
+import {
+  DEFAULT_QUERY,
+  DEFAULT_HPP,
+  DEFAULT_PAGE,
+  PATH_BASE,
+  PATH_SEARCH,
+  PARAM_SEARCH,
+  PARAM_PAGE,
+  PARAM_HPP,
+} from '../../constants';
 
 class App extends React.Component {
   constructor(props) {
