@@ -1,7 +1,7 @@
 import React from 'react';
-import './Articles.scss';
+import './index.scss';
 import PropTypes from 'prop-types';
-import Button from '../Button/Button';
+import Button from '../Button';
 
 const formatDate = (date) => {
   const pos = date.indexOf('T');

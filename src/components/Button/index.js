@@ -1,10 +1,10 @@
 import React from 'react';
-import './Button.scss';
+import './index.scss';
 import PropTypes from 'prop-types';
 
 function Button({
-  type,
-  onClick,
+  type = 'button',
+  onClick = () => {},
   children,
   className,
 }) {
@@ -20,18 +20,11 @@ function Button({
   );
 }
 
-Button.defaultProps = {
-  type: 'button',
-  onClick: () => {},
-  children: 'Button',
-  className: '',
-};
-
 Button.propTypes = {
-  type: PropTypes.string,
-  onClick: PropTypes.func,
-  children: PropTypes.string,
-  className: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  children: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default Button;
