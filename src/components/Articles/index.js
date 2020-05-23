@@ -36,6 +36,8 @@ function Articles({
             </div>
             <Button
               onClick={() => onDismiss(item.objectID)}
+              type="button"
+              className="button"
             >
               Dismiss
             </Button>

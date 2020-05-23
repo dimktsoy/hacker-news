@@ -20,7 +20,7 @@ function Search({
         onChange={onChange}
       />
       <Button
-        className="button--primary"
+        className="button button--primary"
         type="submit"
       >
         Search
