@@ -3,30 +3,43 @@ import './index.scss';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 
-function Search({
-  value,
-  onSubmit,
-  onChange,
-}) {
-  return (
-    <form
-      className="search"
-      onSubmit={onSubmit}
-    >
-      <input
-        className="search__control"
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-      <Button
-        className="button button--primary"
-        type="submit"
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.inputReft = React.createRef();
+  }
+
+  componentDidMount() {
+    if (this.inputReft.current) {
+      this.inputReft.current.focus();
+    }
+  }
+
+  render() {
+    const { value, onSubmit, onChange } = this.props;
+
+    return (
+      <form
+        className="search"
+        onSubmit={onSubmit}
       >
-        Search
-      </Button>
-    </form>
-  );
+        <input
+          className="search__control"
+          type="text"
+          value={value}
+          onChange={onChange}
+          ref={this.inputReft}
+        />
+        <Button
+          className="button button--primary"
+          type="submit"
+        >
+          Search
+        </Button>
+      </form>
+    );
+  }
 }
 
 Search.propTypes = {
