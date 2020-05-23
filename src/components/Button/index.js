@@ -3,15 +3,15 @@ import './index.scss';
 import PropTypes from 'prop-types';
 
 function Button({
-  type = 'button',
-  onClick = () => {},
+  type,
+  onClick,
   children,
   className,
 }) {
   return (
     // eslint-disable-next-line react/button-has-type
     <button
-      className={`button ${className}`}
+      className={className}
       type={type}
       onClick={onClick}
     >
@@ -20,11 +20,18 @@ function Button({
   );
 }
 
+Button.defaultProps = {
+  type: 'button',
+  onClick: () => null,
+  children: 'Button',
+  className: 'button',
+};
+
 Button.propTypes = {
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  onClick: PropTypes.func,
+  children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 export default Button;
