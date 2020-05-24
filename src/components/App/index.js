@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import './index.scss';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Articles from '../Articles';
 import Search from '../Search';
 import Button from '../Button';
+
 import {
   DEFAULT_QUERY,
   DEFAULT_HPP,
