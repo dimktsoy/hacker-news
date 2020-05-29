@@ -101,7 +101,6 @@ class Articles extends React.Component {
               <Button
                 onClick={() => onDismiss(item.objectID)}
                 type="button"
-                className="button"
               >
                 Dismiss
               </Button>

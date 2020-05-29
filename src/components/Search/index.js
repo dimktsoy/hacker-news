@@ -33,7 +33,7 @@ class Search extends React.Component {
           ref={this.inputReft}
         />
         <Button
-          className="button button--primary"
+          className="button--primary"
           type="submit"
         >
           Search

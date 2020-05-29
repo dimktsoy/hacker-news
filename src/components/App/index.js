@@ -124,7 +124,7 @@ class App extends React.Component {
               : (
                 <Button
                   onClick={() => this.fetchSearchTopStories(searchTerm, page + 1)}
-                  className="button button--primary"
+                  className="button--primary"
                   type="button"
                 >
                   More

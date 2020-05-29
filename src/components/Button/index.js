@@ -1,37 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+
 import './index.scss';
 
-function Button({
-  type,
-  onClick,
-  children,
-  className,
-}) {
+const Button = ({
+  children, onClick, className, disabled, active, ...attrs
+}) => {
+  const onClickAction = (e) => {
+    if (disabled) {
+      e.preventDefault();
+    } else {
+      return onClick(e);
+    }
+    return false;
+  };
+
+  const classes = classNames(
+    'button',
+    className,
+    { 'button--active': active },
+  );
+
+  const Tag = attrs.href ? 'a' : 'button';
+
   return (
-    // eslint-disable-next-line react/button-has-type
-    <button
-      className={className}
-      type={type}
-      onClick={onClick}
+    <Tag
+      className={classes}
+      disabled={disabled}
+      onClick={onClickAction}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...attrs}
     >
       {children}
-    </button>
+    </Tag>
   );
-}
-
-Button.defaultProps = {
-  type: 'button',
-  onClick: () => null,
-  children: 'Button',
-  className: 'button',
 };
 
 Button.propTypes = {
-  type: PropTypes.string,
-  onClick: PropTypes.func,
   children: PropTypes.node,
+  onClick: PropTypes.func,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
+  active: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  children: 'Default button',
+  onClick: () => {},
+  className: '',
+  disabled: false,
+  active: false,
 };
 
 export default Button;
