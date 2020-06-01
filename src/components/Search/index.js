@@ -1,52 +1,62 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Button from '../Button';
+import Input from '../Input';
+
 import './index.scss';
 
-import Button from '../Button';
-
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.inputReft = React.createRef();
-  }
-
-  componentDidMount() {
-    if (this.inputReft.current) {
-      this.inputReft.current.focus();
+const Search = ({
+  value, onSubmit, onChange, className,
+}) => {
+  const inputReft = useRef(null);
+  useEffect(() => {
+    if (inputReft.current) {
+      inputReft.current.focus();
     }
-  }
+  });
 
-  render() {
-    const { value, onSubmit, onChange } = this.props;
+  const classes = classNames(
+    'search',
+    className,
+  );
 
-    return (
-      <form
-        className="search"
-        onSubmit={onSubmit}
-      >
-        <input
-          className="search__control"
+  return (
+    <form
+      className={classes}
+      onSubmit={onSubmit}
+    >
+      <div className="search__input-wrap">
+        <Input
+          ref={inputReft}
+          id="search"
           type="text"
           value={value}
           onChange={onChange}
-          ref={this.inputReft}
         />
-        <Button
-          className="button--primary"
-          type="submit"
-        >
-          Search
-        </Button>
-      </form>
-    );
-  }
-}
+      </div>
+      <Button
+        className="button--primary"
+        type="submit"
+      >
+        Search
+      </Button>
+    </form>
+  );
+};
 
 Search.propTypes = {
-  value: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+};
+
+Search.defaultProps = {
+  className: '',
+  value: '',
+  onChange: () => {},
+  onSubmit: () => {},
 };
 
 export default Search;
