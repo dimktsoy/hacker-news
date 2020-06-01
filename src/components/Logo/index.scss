@@ -1,0 +1,16 @@
+.logo {
+  $block-name: &;
+
+  &[href] {
+    &:hover {
+      #{$block-name}__image {
+        filter: brightness(1.2);
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    border-radius: 4px;
+  }
+}
