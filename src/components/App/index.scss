@@ -1,4 +1,5 @@
 .app {
+  $block-name: &;
 
   /* Header */
 
@@ -11,6 +12,10 @@
     right: 0;
     background-color: #fff;
     z-index: 100;
+
+    &-logo {
+      margin-right: 10px;
+    }
   }
 
   /* Content */
@@ -24,6 +29,10 @@
   &__container {
     max-width: 800px;
     margin: 0 auto;
+
+    &--d-flex {
+      display: flex;
+    }
   }
 
   /* Bottom */

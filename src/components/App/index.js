@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import './index.scss';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Articles from '../Articles';
 import Search from '../Search';
 import Button from '../Button';
+import Logo from '../Logo';
+import LogoImage from '../../images/logo.jpg';
+
+import './index.scss';
 
 import {
   DEFAULT_QUERY,
@@ -97,8 +99,17 @@ class App extends React.Component {
     return (
       <div className="app">
         <header className="app__header">
-          <div className="app__container">
+          <div className="app__container app__container--d-flex">
+            <Logo
+              className="app__header-logo"
+              src={LogoImage}
+              href="/"
+              width={50}
+              height={50}
+              alt="Hacker News"
+            />
             <Search
+              className="app__header-search"
               value={searchTerm}
               onChange={this.onSearchChange}
               onSubmit={this.onSearchSubmit}
