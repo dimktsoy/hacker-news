@@ -6,7 +6,7 @@ import Articles from '../Articles';
 import Search from '../Search';
 import Button from '../Button';
 import Logo from '../Logo';
-import LogoImage from '../../images/logo.jpg';
+import LogoImage from '../../images/logo.png';
 
 import './index.scss';
 
@@ -104,12 +104,12 @@ class App extends React.Component {
               className="app__header-logo"
               src={LogoImage}
               href="/"
-              width={50}
-              height={50}
               alt="Hacker News"
+              width={94}
+              height={40}
             />
             <Search
-              className="app__header-search"
+              className="app__header-form"
               value={searchTerm}
               onChange={this.onSearchChange}
               onSubmit={this.onSearchSubmit}

@@ -1,26 +1,9 @@
 .search {
   position: relative;
   display: flex;
-  width: 100%;
 
-  &__control {
-    width: 100%;
-    max-width: 300px;
-    font-size: 18px;
-    padding: 8px 10px;
-    border-radius: 4px;
-    border:1px solid #b5bdc4;
+  &__input-wrap {
+    flex: 0 1 300px;
     margin-right: 10px;
-    outline: none;
-    background-color: #f9fafa;
-
-    &:hover {
-      border-color: #99a3ad;
-    }
-
-    &:focus {
-      border-color: #ff6600;
-      box-shadow: 1px 1px 0 #ff6600;
-    }
   }
 }
