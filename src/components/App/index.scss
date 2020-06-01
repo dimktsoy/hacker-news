@@ -14,7 +14,11 @@
     z-index: 100;
 
     &-logo {
-      margin-right: 10px;
+      margin-right: 50px;
+    }
+
+    &-form {
+      flex: 1 0 auto;
     }
   }
 
