@@ -2,6 +2,9 @@
 
 Простое приложение на ReactJS, содержит постраничную навигацию, поиск и сортировку.
 
+## Демо
+- [hacker-news](https://github.com/dimktsoy/hacker-news)
+
 ## Используемые ресурсы и инструменты:
 - [Create React App (рабочее окружение)](https://github.com/facebook/create-react-app)
 - [Книга "The Road to learn React"](https://github.com/the-road-to-learn-react)
