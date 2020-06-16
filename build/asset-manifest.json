@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.6df8af04.chunk.css",
-    "main.js": "/static/js/main.3c82baba.chunk.js",
-    "main.js.map": "/static/js/main.3c82baba.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.0eb35775.js",
-    "runtime-main.js.map": "/static/js/runtime-main.0eb35775.js.map",
-    "static/js/2.e1c19e4d.chunk.js": "/static/js/2.e1c19e4d.chunk.js",
-    "static/js/2.e1c19e4d.chunk.js.map": "/static/js/2.e1c19e4d.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.273c8fc21524f986b66b5c09d8892f6d.js": "/precache-manifest.273c8fc21524f986b66b5c09d8892f6d.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.6df8af04.chunk.css.map": "/static/css/main.6df8af04.chunk.css.map",
-    "static/js/2.e1c19e4d.chunk.js.LICENSE.txt": "/static/js/2.e1c19e4d.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/static/media/PTSans-Regular.8f69eec8.woff"
+    "main.css": "/hacker-news/static/css/main.9a5f2645.chunk.css",
+    "main.js": "/hacker-news/static/js/main.9bf23353.chunk.js",
+    "main.js.map": "/hacker-news/static/js/main.9bf23353.chunk.js.map",
+    "runtime-main.js": "/hacker-news/static/js/runtime-main.1d1692c7.js",
+    "runtime-main.js.map": "/hacker-news/static/js/runtime-main.1d1692c7.js.map",
+    "static/js/2.b19cbb24.chunk.js": "/hacker-news/static/js/2.b19cbb24.chunk.js",
+    "static/js/2.b19cbb24.chunk.js.map": "/hacker-news/static/js/2.b19cbb24.chunk.js.map",
+    "index.html": "/hacker-news/index.html",
+    "precache-manifest.6c366e3e55878835b5a24db0bc0e07e7.js": "/hacker-news/precache-manifest.6c366e3e55878835b5a24db0bc0e07e7.js",
+    "service-worker.js": "/hacker-news/service-worker.js",
+    "static/css/main.9a5f2645.chunk.css.map": "/hacker-news/static/css/main.9a5f2645.chunk.css.map",
+    "static/js/2.b19cbb24.chunk.js.LICENSE.txt": "/hacker-news/static/js/2.b19cbb24.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/hacker-news/static/media/PTSans-Regular.8f69eec8.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.0eb35775.js",
-    "static/js/2.e1c19e4d.chunk.js",
-    "static/css/main.6df8af04.chunk.css",
-    "static/js/main.3c82baba.chunk.js"
+    "static/js/runtime-main.1d1692c7.js",
+    "static/js/2.b19cbb24.chunk.js",
+    "static/css/main.9a5f2645.chunk.css",
+    "static/js/main.9bf23353.chunk.js"
   ]
 }
